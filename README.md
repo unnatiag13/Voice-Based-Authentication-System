@@ -12,8 +12,6 @@ A biometric authentication system that verifies user identity through voice reco
 - ML: Python, Librosa, Scikit-learn
 - Backend: FastAPI
 - Frontend: HTML/CSS/JavaScript
-- CI/CD: GitHub Actions
-- Deployment: Docker + Render
 
 ## 📌 Project Status
 🚧 Currently in research & planning phase
