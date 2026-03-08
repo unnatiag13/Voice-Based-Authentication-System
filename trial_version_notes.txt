@@ -1,0 +1,32 @@
+v1
+
+Whole audio
+→ MFCC
+→ Take average
+→ Compare
+
+The problem is here 
+np.mean(mfcc.T, axis=0)
+
+compressing entire voice into ONE average vector.
+👉 Averaging removes speaker uniqueness.
+
+So system mainly learns:
+
+microphone characteristics
+recording environment
+loudness pattern
+
+NOT the speaker identity strongly enough.
+
+Result:
+Everyone looks similar
+
+
+
+FIX #1 Normalize Audio
+use Mean + standard deviation
+
+
+
+
