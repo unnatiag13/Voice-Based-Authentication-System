@@ -1,0 +1,7 @@
+Flask
+librosa
+numpy
+scikit-learn
+soundfile
+sounddevice
+dtaidistance
