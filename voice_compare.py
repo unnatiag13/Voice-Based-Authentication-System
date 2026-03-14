@@ -69,3 +69,5 @@ if score < 1.8:
     print("✅ Same Speaker")
 else:
     print("❌ Different Speaker")
+
+
