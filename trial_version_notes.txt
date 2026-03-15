@@ -35,5 +35,5 @@ Made the project CI/CD
 2. updated dockerfile
 3. created .dockerignore
 4. created .github -> workflows -> docker-ci.yml
-
+5. Finally CI Running 
 
