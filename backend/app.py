@@ -1,25 +1,33 @@
 from flask import Flask, request, jsonify, send_from_directory
 import os
 
-app = Flask(__name__, static_folder="../frontend")
+app = Flask(__name__)
 
+# Path to frontend folder
+FRONTEND_FOLDER = os.path.join(os.getcwd(), "frontend")
+
+# Serve main page
 @app.route("/")
 def home():
-    return send_from_directory("../frontend", "index.html")
+    return send_from_directory(FRONTEND_FOLDER, "index.html")
 
-@app.route("/style.css")
-def css():
-    return send_from_directory("../frontend", "style.css")
+# Serve all frontend files automatically
+@app.route("/<path:path>")
+def static_files(path):
+    return send_from_directory(FRONTEND_FOLDER, path)
 
-@app.route("/script.js")
-def js():
-    return send_from_directory("../frontend", "script.js")
-
+# Voice verification API
 @app.route("/verify", methods=["POST"])
 def verify():
-    audio = request.files['audio']
+    audio = request.files.get("audio")
+
+    if not audio:
+        return jsonify({"error": "No audio file provided"}), 400
+
+    # later your voice model will go here
     return jsonify({"message": "Voice Verified Successfully"})
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    port = int(os.environ.get("PORT", 5000))  # important for Render
+    app.run(host="0.0.0.0", port=port)
