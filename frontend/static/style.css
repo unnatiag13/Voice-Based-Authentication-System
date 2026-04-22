@@ -1,0 +1,185 @@
+body{
+
+margin:0;
+font-family:Arial;
+background:#0c0f1a;
+color:white;
+
+}
+
+/* NAVBAR */
+
+nav{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px 60px;   /* thinner */
+background:#0a0d16;
+border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.logo{
+
+font-size:22px;
+font-weight:bold;
+color:cyan;
+
+}
+
+nav ul{
+
+display:flex;
+gap:25px;
+font-size:15px;
+
+}
+
+nav li{
+
+cursor:pointer;
+opacity:0.8;
+
+}
+
+nav li:hover{
+
+opacity:1;
+
+}
+
+/* PAGE */
+
+.page{
+
+display:none;
+padding:80px;
+
+}
+
+.page.active{
+
+display:block;
+
+}
+
+/* HERO */
+
+.hero{
+
+max-width:600px;
+
+}
+
+.hero h1{
+
+font-size:50px;
+margin-bottom:10px;
+
+}
+
+.hero p{
+
+opacity:0.8;
+
+}
+
+.primary-btn{
+
+margin-top:20px;
+padding:14px 28px;
+background:linear-gradient(90deg,cyan,magenta);
+border:none;
+border-radius:8px;
+cursor:pointer;
+
+}
+
+/* FEATURES */
+
+.features{
+
+display:flex;
+gap:30px;
+margin-top:80px;
+
+}
+
+.feature{
+
+background:#111626;
+padding:25px;
+border-radius:10px;
+flex:1;
+
+}
+
+/* AUTH */
+
+.auth-container{
+
+max-width:400px;
+
+}
+
+.auth-container input{
+
+width:100%;
+padding:12px;
+margin:10px 0;
+
+}
+
+/* MIC */
+
+.mic-btn{
+
+width:80px;
+height:80px;
+border-radius:50%;
+font-size:30px;
+border:none;
+background:cyan;
+cursor:pointer;
+
+}
+
+/* PROGRESS */
+
+.progress{
+
+width:100%;
+height:8px;
+background:#222;
+margin:10px 0;
+
+}
+
+#bar{
+
+height:100%;
+width:0%;
+background:cyan;
+
+}
+
+.hero-buttons{
+display:flex;
+gap:16px;
+margin-top:25px;
+}
+
+.secondary-btn{
+padding:14px 28px;
+background:transparent;
+border:1px solid cyan;
+border-radius:8px;
+color:cyan;
+cursor:pointer;
+transition:0.3s;
+}
+
+.secondary-btn:hover{
+background:cyan;
+color:black;
+}

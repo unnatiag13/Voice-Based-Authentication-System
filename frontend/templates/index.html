@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Voice Authentication</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">VoiceSecure</div>
+
+<ul>
+
+<li onclick="showPage('home')">Home</li>
+<li onclick="showPage('login')">Login</li>
+<li onclick="showPage('register')">Register</li>
+
+</ul>
+
+</nav>
+
+<!-- HOME -->
+
+<section id="home" class="page active">
+
+<div class="hero">
+
+<h1>AI Voice Authentication</h1>
+
+<p>
+Secure biometric login using advanced voice recognition technology
+</p>
+
+<div class="hero-buttons">
+
+<button onclick="showPage('login')" class="primary-btn">
+Start Voice Login
+</button>
+
+<button onclick="showPage('register')" class="secondary-btn">
+Register
+</button>
+
+</div>
+
+</div>
+
+<div class="features">
+
+<div class="feature">
+
+<h3>Voice Biometrics</h3>
+<p>Authenticate users with unique voice signatures</p>
+
+</div>
+
+<div class="feature">
+
+<h3>AI Security</h3>
+<p>Deep learning models verify speaker identity</p>
+
+</div>
+
+<div class="feature">
+
+<h3>Fast Authentication</h3>
+<p>Secure login within seconds</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- LOGIN -->
+
+<section id="login" class="page">
+
+<div class="auth-container">
+
+<h2>Voice Login</h2>
+
+<input type="text" placeholder="Username">
+
+<div class="mic-section">
+
+<button id="loginMic" class="mic-btn" onclick="startLogin()">
+
+🎤
+
+</button>
+
+<div id="loginStatus"></div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- REGISTER -->
+
+<section id="register" class="page">
+
+<div class="auth-container">
+
+<h2>Register Voice Profile</h2>
+
+<input type="text" placeholder="Username">
+<input type="password" placeholder="Password">
+
+<p id="recordText">Recordings: 0 / 4</p>
+
+<button class="mic-btn" onclick="recordVoice()">🎤</button>
+
+<div class="progress">
+
+<div id="bar"></div>
+
+</div>
+
+<button id="registerBtn" disabled>Register</button>
+
+</div>
+
+</section>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
