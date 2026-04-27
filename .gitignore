@@ -3,3 +3,5 @@ __pycache__/
 *.pyc
 *.wav
 *.pkl
+*.py
+frontend_backup/
