@@ -3,6 +3,8 @@
 Voice-Based Authentication System
 A biometric authentication system that verifies user identity using voice recognition. This project leverages machine learning and deep learning techniques to extract voice features and match them against stored user profiles.
 
+
+
 Team Members
 
 
@@ -17,8 +19,12 @@ Aarohi Mishra — Frontend & DevOps
 
 
 Project Overview
+
 Traditional authentication systems rely on passwords or OTPs, which can be insecure or inconvenient. This project introduces a voice-based biometric system that authenticates users based on unique vocal characteristics.
 The system records a user's voice, processes it, extracts features, and compares it with stored voice embeddings to verify identity.
+
+
+
 
 Tech Stack
 
@@ -42,6 +48,7 @@ Vercel/Netlify for frontend
 
 
 
+
 Model Details
 
 
@@ -55,6 +62,7 @@ Extracted embeddings are compared using similarity metrics (e.g., cosine similar
 
 
 The system decides whether the voice matches a registered user based on a threshold.
+
 
 
 
@@ -80,10 +88,17 @@ Authentication result (Success / Failure)
 
 
 
+
+
 Project Structure (Example)
+
 "Voice-Based-Authentication-System/│── backend/│   ├── main.py│   ├── routes/│   ├── models/││── frontend/│   ├── index.html│   ├── style.css│   ├── script.js││── ml/│   ├── feature_extraction.py│   ├── model.py││── README.md"
 
+
+
+
 How to Run
+
 1. Clone the repository
 git clone https://github.com/your-repo/Voice-Based-Authentication-System.gitcd Voice-Based-Authentication-System
 2. Install dependencies
@@ -92,6 +107,7 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 4. Open frontend
 Simply open index.html in your browser
+
 
 
 Features
@@ -110,6 +126,8 @@ Pretrained deep learning model (SpeechBrain)
 
 
 Feature extraction using Librosa
+
+
 
 
 
@@ -132,8 +150,12 @@ Multi-user voice database support
 
 
 
+
+
 Project Status
 Currently under development (Core ML pipeline implemented, API & UI in progress)
+
+
 
 
 
