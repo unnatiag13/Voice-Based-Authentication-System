@@ -1,7 +1,9 @@
-🎙️ Voice-Based Authentication System
+*VOICE-BASED AUTHENTICATION SYSTEM*
+
+Voice-Based Authentication System
 A biometric authentication system that verifies user identity using voice recognition. This project leverages machine learning and deep learning techniques to extract voice features and match them against stored user profiles.
 
-👥 Team Members
+Team Members
 
 
 Kritika Saxena — Machine Learning Model
@@ -14,35 +16,33 @@ Aarohi Mishra — Frontend & DevOps
 
 
 
-🧠 Project Overview
+Project Overview
 Traditional authentication systems rely on passwords or OTPs, which can be insecure or inconvenient. This project introduces a voice-based biometric system that authenticates users based on unique vocal characteristics.
 The system records a user's voice, processes it, extracts features, and compares it with stored voice embeddings to verify identity.
 
-⚙️ Tech Stack
+Tech Stack
 
 
-🔹Frontend:
+Frontend:
 username + password + voice recording
 Html + CSS + JavaScript
 
-🔹Backend:
+Backend:
 Flask API
 
-🔹ML:
+Machine Learning:
 SpeechBrain ECAPA embedding model
 
-🔹Database:
+Database:
 SQLite for MVP
 
-🔹Deployment:
+Deployment:
 Render for backend
 Vercel/Netlify for frontend
 
 
 
-
-
-🤖 Model Details
+Model Details
 
 
 Used SpeechBrain's pretrained speaker recognition model for extracting voice embeddings.
@@ -58,7 +58,7 @@ The system decides whether the voice matches a registered user based on a thresh
 
 
 
-🔄 System Workflow
+System Workflow
 
 
 User records voice input
@@ -80,10 +80,10 @@ Authentication result (Success / Failure)
 
 
 
-📂 Project Structure (Example)
-Voice-Based-Authentication-System/│── backend/│   ├── main.py│   ├── routes/│   ├── models/││── frontend/│   ├── index.html│   ├── style.css│   ├── script.js││── ml/│   ├── feature_extraction.py│   ├── model.py││── README.md
+Project Structure (Example)
+"Voice-Based-Authentication-System/│── backend/│   ├── main.py│   ├── routes/│   ├── models/││── frontend/│   ├── index.html│   ├── style.css│   ├── script.js││── ml/│   ├── feature_extraction.py│   ├── model.py││── README.md"
 
-🚀 How to Run
+How to Run
 1. Clone the repository
 git clone https://github.com/your-repo/Voice-Based-Authentication-System.gitcd Voice-Based-Authentication-System
 2. Install dependencies
@@ -94,26 +94,26 @@ uvicorn main:app --reload
 Simply open index.html in your browser
 
 
-🧪 Features
+Features
 
 
-🎤 Voice recording & processing
+Voice recording & processing
 
 
-🔐 Secure biometric authentication
+Secure biometric authentication
 
 
-⚡ FastAPI-based backend
+FastAPI-based backend
 
 
-🤖 Pretrained deep learning model (SpeechBrain)
+Pretrained deep learning model (SpeechBrain)
 
 
-📊 Feature extraction using Librosa
+Feature extraction using Librosa
 
 
 
-📊 Future Scope
+Future Scope
 
 
 Add real-time authentication
@@ -132,12 +132,12 @@ Multi-user voice database support
 
 
 
-📌 Project Status
-🚧 Currently under development (Core ML pipeline implemented, API & UI in progress)
+Project Status
+Currently under development (Core ML pipeline implemented, API & UI in progress)
 
 
 
-📜 Conclusion
+Conclusion
 This project demonstrates how voice biometrics can be used as a secure and user-friendly authentication method. By leveraging pretrained models like SpeechBrain, the system achieves efficient and scalable voice recognition.
 
 
