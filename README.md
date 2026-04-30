@@ -19,37 +19,26 @@ Traditional authentication systems rely on passwords or OTPs, which can be insec
 The system records a user's voice, processes it, extracts features, and compares it with stored voice embeddings to verify identity.
 
 ⚙️ Tech Stack
-🔹 Machine Learning
 
 
-Python
+🔹Frontend:
+username + password + voice recording
+Html + CSS + JavaScript
+
+🔹Backend:
+Flask API
+
+🔹ML:
+SpeechBrain ECAPA embedding model
+
+🔹Database:
+SQLite for MVP
+
+🔹Deployment:
+Render for backend
+Vercel/Netlify for frontend
 
 
-Librosa (audio processing)
-
-
-Scikit-learn
-
-
-SpeechBrain (Pretrained Speaker Recognition Model)
-
-
-🔹 Backend
-
-
-FastAPI (REST API for authentication & processing)
-
-
-🔹 Frontend
-
-
-HTML
-
-
-CSS
-
-
-JavaScript
 
 
 
