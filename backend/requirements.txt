@@ -9,3 +9,5 @@ numpy
 pydub
 imageio-ffmpeg
 torchcodec
+scipy
+gunicorn
