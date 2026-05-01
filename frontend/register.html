@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register — VoiceAuth</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+<div class="app-wrapper">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 1v4M5 3h4M3 7h2M9 7h2M5 7a2 2 0 0 0 4 0V5a2 2 0 0 0-4 0v2z"/>
+        </svg>
+      </div>
+      VoiceAuth
+    </a>
+    <div class="navbar-right">
+      <a href="login.html" class="nav-link">Sign In</a>
+      <span id="health-badge" class="health-badge">Checking…</span>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="page-center">
+    <div class="card voice-card">
+
+      <!-- Header -->
+      <div class="card-header">
+        <h2>Create account</h2>
+        <p>Set up your credentials and record your voice profile.</p>
+      </div>
+
+      <!-- Credentials -->
+      <div class="form-group">
+        <label class="form-label" for="username">Username</label>
+        <input
+          class="form-input"
+          type="text"
+          id="username"
+          placeholder="e.g. john_doe"
+          autocomplete="username"
+          spellcheck="false"
+        />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="password">Password</label>
+        <input
+          class="form-input"
+          type="password"
+          id="password"
+          placeholder="Choose a strong password"
+          autocomplete="new-password"
+        />
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Voice section header -->
+      <div class="steps-row">
+        <span style="font-size:0.8125rem; font-weight:500; color:var(--charcoal);">Voice samples</span>
+        <div id="steps-track" style="display:flex;gap:0.4rem;margin-left:0.5rem;"></div>
+        <span id="step-counter" class="step-counter">0 / 5</span>
+      </div>
+
+      <!-- Prompt -->
+      <div class="prompt-box">
+        <div class="prompt-label">Say aloud</div>
+        <div id="prompt-text" class="prompt-text">My voice is my password</div>
+      </div>
+
+      <!-- Waveform -->
+      <div id="waveform" class="waveform-wrap">
+        <div class="waveform-bar"></div>
+        <div class="waveform-bar"></div>
+        <div class="waveform-bar"></div>
+        <div class="waveform-bar"></div>
+        <div class="waveform-bar"></div>
+        <div class="waveform-bar"></div>
+        <div class="waveform-bar"></div>
+        <div class="waveform-bar"></div>
+        <div class="waveform-bar"></div>
+        <div class="waveform-bar"></div>
+        <div class="waveform-bar"></div>
+        <div class="waveform-bar"></div>
+      </div>
+
+      <!-- Timer bar -->
+      <div class="timer-track">
+        <div id="timer-bar"></div>
+      </div>
+
+      <!-- Record row -->
+      <div class="record-row">
+        <button type="button" id="record-btn" class="btn btn-record">
+          <svg class="mic-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="1" width="6" height="11" rx="3"/>
+            <path d="M5 10a7 7 0 0 0 14 0"/>
+            <line x1="12" y1="19" x2="12" y2="23"/>
+            <line x1="8" y1="23" x2="16" y2="23"/>
+          </svg>
+          Record
+        </button>
+      </div>
+
+      <!-- Status -->
+      <p id="status-msg" class="status-msg status-neutral">
+        Press Record and speak the phrase clearly.
+      </p>
+
+      <div style="margin-top:1.25rem;">
+        <button type="button" id="submit-btn" class="btn btn-primary btn-full" disabled>
+          Register
+        </button>
+      </div>
+
+      <p style="text-align:center; margin-top:1rem; font-size:0.8375rem; color:var(--muted);">
+        Already have an account? <a href="login.html" style="color:var(--ink); font-weight:500;">Sign in</a>
+      </p>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>VoiceAuth &mdash; Voice-Based Authentication System</p>
+  </footer>
+
+</div>
+
+<!-- Toast -->
+<div id="toast-container"></div>
+
+<!-- Scripts (order matters) -->
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/recorder.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/register.js"></script>
+<script>
+  // Prevent any Enter key from reloading
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") e.preventDefault();
+  });
+</script>
+</body>
+</html>

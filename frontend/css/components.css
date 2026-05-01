@@ -1,0 +1,378 @@
+/* ─────────────────────────────────────────────
+   components.css  –  Page-specific components
+   ───────────────────────────────────────────── */
+
+/* ══════════════════════════════════════════════
+   INDEX PAGE
+   ══════════════════════════════════════════════ */
+
+.hero-section {
+  text-align: center;
+  max-width: 560px;
+  padding: 3rem 1.5rem;
+  animation: fadeInUp 0.5s ease both;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--off);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 1.75rem;
+  letter-spacing: 0.02em;
+}
+
+.hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+}
+
+.hero-section h1 {
+  margin-bottom: 1rem;
+}
+
+.hero-section p {
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 420px;
+  margin: 0 auto 2.25rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.hero-meta-item {
+  text-align: center;
+}
+
+.hero-meta-item strong {
+  display: block;
+  font-size: 1.125rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.hero-meta-item span {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.hero-meta-sep {
+  width: 1px;
+  height: 32px;
+  background: var(--border);
+}
+
+/* ══════════════════════════════════════════════
+   REGISTER & LOGIN PAGES  –  Voice recording UI
+   ══════════════════════════════════════════════ */
+
+.voice-card {
+  max-width: 460px;
+}
+
+/* Step dots */
+.steps-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.step-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.step-dot.active {
+  background: var(--ink);
+  transform: scale(1.25);
+}
+
+.step-dot.done {
+  background: var(--green);
+}
+
+.step-counter {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* Prompt box */
+.prompt-box {
+  background: var(--off);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.prompt-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.4rem;
+}
+
+.prompt-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--ink);
+  font-style: italic;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+/* Waveform */
+.waveform-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  height: 44px;
+  margin-bottom: 1.25rem;
+}
+
+.waveform-bar {
+  width: 3px;
+  height: 100%;
+  background: var(--border);
+  border-radius: 2px;
+  transform: scaleY(0.3);
+  transform-origin: center;
+  transition: background 0.3s ease;
+}
+
+.recording-active .waveform-bar {
+  background: var(--ink);
+}
+
+.recording-active .waveform-bar:nth-child(1)  { animation: wave-bar 0.9s 0.00s ease-in-out infinite; }
+.recording-active .waveform-bar:nth-child(2)  { animation: wave-bar 0.9s 0.07s ease-in-out infinite; }
+.recording-active .waveform-bar:nth-child(3)  { animation: wave-bar 0.9s 0.14s ease-in-out infinite; }
+.recording-active .waveform-bar:nth-child(4)  { animation: wave-bar 0.9s 0.21s ease-in-out infinite; }
+.recording-active .waveform-bar:nth-child(5)  { animation: wave-bar 0.9s 0.28s ease-in-out infinite; }
+.recording-active .waveform-bar:nth-child(6)  { animation: wave-bar 0.9s 0.21s ease-in-out infinite; }
+.recording-active .waveform-bar:nth-child(7)  { animation: wave-bar 0.9s 0.14s ease-in-out infinite; }
+.recording-active .waveform-bar:nth-child(8)  { animation: wave-bar 0.9s 0.07s ease-in-out infinite; }
+.recording-active .waveform-bar:nth-child(9)  { animation: wave-bar 0.9s 0.00s ease-in-out infinite; }
+.recording-active .waveform-bar:nth-child(10) { animation: wave-bar 0.9s 0.35s ease-in-out infinite; }
+.recording-active .waveform-bar:nth-child(11) { animation: wave-bar 0.9s 0.42s ease-in-out infinite; }
+.recording-active .waveform-bar:nth-child(12) { animation: wave-bar 0.9s 0.28s ease-in-out infinite; }
+
+/* Timer progress bar */
+.timer-track {
+  height: 2px;
+  background: var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+}
+
+#timer-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--ink);
+  border-radius: 2px;
+}
+
+/* Record row */
+.record-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.record-row .btn-record {
+  flex: 1;
+}
+
+/* Status message */
+.status-msg {
+  font-size: 0.8375rem;
+  text-align: center;
+  min-height: 1.25rem;
+  transition: color 0.2s ease;
+}
+
+.status-neutral   { color: var(--muted); }
+.status-success   { color: var(--green); }
+.status-error     { color: var(--red);   }
+.status-recording { color: var(--red);   font-weight: 500; }
+
+/* Mic icon (inline SVG inside record btn) */
+.mic-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════
+   RESULT PAGE
+   ══════════════════════════════════════════════ */
+
+.result-card {
+  max-width: 420px;
+  text-align: center;
+}
+
+.result-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.25rem;
+  color: var(--muted);
+  transition: color 0.3s ease;
+}
+
+.result-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.result-card.state-success .result-icon { color: var(--green); }
+.result-card.state-denied  .result-icon { color: var(--red);   }
+.result-card.state-error   .result-icon { color: var(--amber); }
+
+.result-title {
+  margin-bottom: 0.375rem;
+}
+
+.result-subtitle {
+  font-size: 0.9375rem;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+/* Score ring */
+.score-ring-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.score-ring {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.score-ring svg {
+  width: 80px;
+  height: 80px;
+  transform: rotate(-90deg);
+}
+
+.score-ring-bg { fill: none; stroke: var(--border); stroke-width: 5; }
+.score-ring-fill {
+  fill: none;
+  stroke: var(--green);
+  stroke-width: 5;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s ease;
+}
+
+.score-ring-denied .score-ring-fill { stroke: var(--red); }
+
+.score-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.score-value {
+  font-size: 1.125rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.score-label {
+  font-size: 0.6rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Meta table */
+.result-meta {
+  background: var(--off);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.35rem 0;
+  font-size: 0.875rem;
+}
+
+.meta-row + .meta-row {
+  border-top: 1px solid var(--border);
+}
+
+.meta-label { color: var(--muted); }
+
+.meta-value {
+  font-weight: 500;
+  font-family: var(--font-mono);
+  color: var(--ink);
+  font-size: 0.8375rem;
+}
+
+.highlight-positive { color: var(--green); }
+.highlight-negative { color: var(--red);   }
+
+/* Result state styles */
+.result-card.state-success { border-color: var(--green-border); }
+.result-card.state-denied  { border-color: var(--red-border);   }
+.result-card.state-error   { border-color: var(--amber-border); }
+
+.result-actions {
+  display: flex;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <title>Result — VoiceAuth</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <style>
+    /* Score ring animation on load */
+    .score-ring-fill {
+      stroke-dasharray: 201;   /* 2π × 32 ≈ 201 */
+      stroke-dashoffset: 201;
+      transition: stroke-dashoffset 1.1s cubic-bezier(0.4,0,0.2,1) 0.3s;
+    }
+  </style>
+</head>
+<body>
+<div class="app-wrapper">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 1v4M5 3h4M3 7h2M9 7h2M5 7a2 2 0 0 0 4 0V5a2 2 0 0 0-4 0v2z"/>
+        </svg>
+      </div>
+      VoiceAuth
+    </a>
+    <div class="navbar-right">
+      <a href="register.html" class="nav-link">Register</a>
+      <a href="login.html" class="nav-link">Sign In</a>
+    </div>
+  </nav>
+
+  <!-- Main -->
+  <main class="page-center">
+    <div id="result-card" class="card result-card">
+
+      <!-- Icon -->
+      <div id="result-icon" class="result-icon"></div>
+
+      <!-- Title & subtitle -->
+      <h2 id="result-title" class="result-title">Loading…</h2>
+      <p id="result-subtitle" class="result-subtitle"></p>
+
+      <!-- Score ring (shown only when score present) -->
+      <div id="score-section" class="score-ring-wrap" style="display:none;">
+        <div id="score-ring" class="score-ring">
+          <svg viewBox="0 0 80 80">
+            <circle class="score-ring-bg"   cx="40" cy="40" r="32"/>
+            <circle class="score-ring-fill" cx="40" cy="40" r="32" id="score-arc"/>
+          </svg>
+          <div class="score-center">
+            <span id="score-value" class="score-value">—</span>
+            <span class="score-label">score</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Meta details -->
+      <div id="result-meta" class="result-meta"></div>
+
+      <!-- Action buttons -->
+      <div class="result-actions">
+        <a href="login.html"    class="btn btn-primary btn-sm">Sign In</a>
+        <a href="register.html" class="btn btn-secondary btn-sm">Register</a>
+        <a href="index.html"    class="btn btn-outline btn-sm">Home</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>VoiceAuth &mdash; Voice-Based Authentication System</p>
+  </footer>
+
+</div>
+
+<!-- Toast -->
+<div id="toast-container"></div>
+
+<!-- Scripts -->
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/result.js"></script>
+<script>
+  // Animate score ring after result.js renders
+  document.addEventListener("DOMContentLoaded", () => {
+    // Score ring animation is triggered by result.js
+    // via window.animateScoreRing(score, denied)
+  });
+
+  window.animateScoreRing = function (score, denied) {
+    const section = document.getElementById("score-section");
+    const arc     = document.getElementById("score-arc");
+    const val     = document.getElementById("score-value");
+    const ring    = document.getElementById("score-ring");
+
+    if (!section || !arc) return;
+
+    section.style.display = "flex";
+
+    const circumference = 201;
+    const offset = circumference - (score * circumference);
+
+    if (denied) ring.classList.add("score-ring-denied");
+
+    val.textContent = (score * 100).toFixed(1) + "%";
+
+    // Trigger animation after a brief delay
+    setTimeout(() => {
+      arc.style.strokeDashoffset = offset;
+    }, 50);
+  };
+</script>
+</body>
+</html>

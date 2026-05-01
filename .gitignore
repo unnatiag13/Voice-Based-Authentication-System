@@ -3,5 +3,67 @@ __pycache__/
 *.pyc
 *.wav
 *.pkl
-*.py
 frontend_backup/
+
+env/
+*.pyo
+*.pyd
+*.log
+
+# SQLite DB (important – never push user data)
+*.db
+*.sqlite3
+
+# Temp uploads / audio files
+temp_uploads/
+*.wav
+*.mp3
+*.webm
+*.m4a
+
+# Model / embeddings / heavy files
+*.pkl
+*.pt
+*.pth
+*.h5
+*.ckpt
+
+# Pretrained models (heavy + downloadable)
+pretrained_model/
+
+# Instance folder (Flask DB location)
+instance/
+
+# -----------------------
+# 🧠 ML / Notebooks
+# -----------------------
+.ipynb_checkpoints/
+*.ipynb
+
+# -----------------------
+# 🧪 Testing / Debug
+# -----------------------
+*.out
+*.err
+*.cache
+
+
+build/
+
+# Backup folders
+frontend_backup/
+
+# -----------------------
+# 🖥️ OS / IDE
+# -----------------------
+.DS_Store
+Thumbs.db
+
+.vscode/
+.idea/
+
+# -----------------------
+# 🔑 Secrets / Env
+# -----------------------
+.env
+.env.*
