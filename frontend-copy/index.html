@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VoiceAuth — Voice-Based Authentication</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+<div class="app-wrapper">
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index.html" class="navbar-brand">
+      <div class="brand-mark">
+        <svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 1v4M5 3h4M3 7h2M9 7h2M5 7a2 2 0 0 0 4 0V5a2 2 0 0 0-4 0v2z"/>
+        </svg>
+      </div>
+      VoiceAuth
+    </a>
+    <div class="navbar-right">
+      <a href="register.html" class="nav-link">Register</a>
+      <a href="login.html" class="nav-link">Login</a>
+      <span id="health-badge" class="health-badge">Checking…</span>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <main class="page-center">
+    <section class="hero-section">
+
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Biometric Security
+      </div>
+
+      <h1>Your voice is<br/>your password.</h1>
+
+      <p>
+        A voice-based authentication system that verifies identity through
+        unique vocal patterns. No OTPs, no dongles — just speak.
+      </p>
+
+      <div class="hero-actions">
+        <a href="register.html" class="btn btn-primary">Create Account</a>
+        <a href="login.html" class="btn btn-secondary">Sign In</a>
+      </div>
+
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <strong>5</strong>
+          <span>Voice samples</span>
+        </div>
+        <div class="hero-meta-sep"></div>
+        <div class="hero-meta-item">
+          <strong>&lt; 5s</strong>
+          <span>Verification time</span>
+        </div>
+        <div class="hero-meta-sep"></div>
+        <div class="hero-meta-item">
+          <strong>Local</strong>
+          <span>Private by design</span>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>VoiceAuth &mdash; Voice-Based Authentication System</p>
+  </footer>
+
+</div>
+
+<!-- Toast container -->
+<div id="toast-container"></div>
+
+<!-- Scripts -->
+<script src="js/config.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    UI.initHealthBadge();
+  });
+</script>
+</body>
+</html>

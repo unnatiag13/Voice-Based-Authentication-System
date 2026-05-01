@@ -1,0 +1,11 @@
+flask
+flask-cors
+bcrypt
+speechbrain
+torch
+torchaudio
+librosa
+numpy
+pydub
+imageio-ffmpeg
+torchcodec

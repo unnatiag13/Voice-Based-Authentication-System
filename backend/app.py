@@ -1,33 +1,124 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify
 import os
+import bcrypt
+from flask_cors import CORS
+import traceback
+
+from config import UPLOAD_FOLDER, THRESHOLD, DB_PATH
+from database import *
+from voice_service import *
 
 app = Flask(__name__)
+CORS(app)
 
-# Path to frontend folder
-FRONTEND_FOLDER = os.path.join(os.getcwd(), "frontend")
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+os.makedirs("instance", exist_ok=True)
 
-# Serve main page
-@app.route("/")
-def home():
-    return send_from_directory(FRONTEND_FOLDER, "index.html")
+init_db()
 
-# Serve all frontend files automatically
-@app.route("/<path:path>")
-def static_files(path):
-    return send_from_directory(FRONTEND_FOLDER, path)
+# ---------------- REGISTER ----------------
+@app.route("/register", methods=["POST"])
+def register():
+    init_db()
+    username = request.form.get("username")
+    password = request.form.get("password")
 
-# Voice verification API
-@app.route("/verify", methods=["POST"])
-def verify():
-    audio = request.files.get("audio")
+    if not username or not password:
+        return jsonify({"error": "Missing username or password"}), 400
 
-    if not audio:
-        return jsonify({"error": "No audio file provided"}), 400
+    existing_user = get_user(username)
+    if existing_user:
+        return jsonify({"error": "User already exists"}), 400
 
-    # later your voice model will go here
-    return jsonify({"message": "Voice Verified Successfully"})
+    files = request.files.getlist("audio")
+
+    if len(files) < 5:
+        return jsonify({"error": "Need 5 voice samples"}), 400
+
+    generated_embeddings = []
+    saved_paths = []
+
+    try:
+        for index, file in enumerate(files):
+            filename = f"{username}_sample_{index + 1}.webm"
+            path = os.path.join(UPLOAD_FOLDER, filename)
+            file.save(path)
+            saved_paths.append(path)
+
+            emb = get_embedding(path)
+            generated_embeddings.append(emb)
+
+        hashed = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+        user_id = create_user(username, hashed)
+
+        if not user_id:
+            return jsonify({"error": "User already exists"}), 400
+
+        for emb in generated_embeddings:
+            insert_embedding(user_id, emb)
+
+        return jsonify({"message": "User registered successfully"}), 201
+
+    except Exception as e:
+        print("REGISTER ERROR:", str(e))
+        traceback.print_exc()
+        return jsonify({"error": f"Registration failed: {str(e)}"}), 500
+
+    finally:
+        for path in saved_paths:
+            if os.path.exists(path):
+                os.remove(path)
+
+# ---------------- LOGIN ----------------
+@app.route("/login", methods=["POST"])
+def login():
+    init_db()
+    username = request.form.get("username")
+    password = request.form.get("password")
+
+    user = get_user(username)
+
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+
+    user_id, _, password_hash = user
+
+    if not bcrypt.checkpw(password.encode(), password_hash):
+        return jsonify({"error": "Wrong password"}), 401
+
+    files = request.files.getlist("audio")
+
+    if len(files) < 2:
+        return jsonify({"error": "Need 2 voice samples"}), 400
+
+    embeddings = get_user_embeddings(user_id)
+
+    scores = []
+
+    for file in files:
+        path = os.path.join(UPLOAD_FOLDER, file.filename)
+        file.save(path)
+
+        score, _ = verify_user(path, embeddings, THRESHOLD)
+        scores.append(score)
+
+        os.remove(path)
+
+    final_score = sum(scores) / len(scores)
+    authenticated = final_score >= THRESHOLD
+
+    return jsonify({
+        "score": final_score,
+        "authenticated": authenticated
+    })
+
+
+# ---------------- HEALTH ----------------
+@app.route("/health", methods=["GET"])
+def health():
+    return jsonify({"status": "running"})
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # important for Render
-    app.run(host="0.0.0.0", port=port)
+    print("Using DB:", DB_PATH)
+    app.run(debug=False, use_reloader=False)

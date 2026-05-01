@@ -1,0 +1,113 @@
+/* ─────────────────────────────────────────────
+   responsive.css  –  Mobile & tablet breakpoints
+   ───────────────────────────────────────────── */
+
+/* ── Tablet (≤768px) ──────────────────────────── */
+@media (max-width: 768px) {
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.25rem; }
+
+  .navbar {
+    padding: 0 1.25rem;
+  }
+
+  .card,
+  .voice-card,
+  .result-card {
+    padding: 1.75rem 1.375rem;
+    border-radius: var(--radius);
+  }
+
+  .hero-section {
+    padding: 2rem 1rem;
+  }
+
+  .hero-meta {
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .navbar-right .nav-link {
+    display: none;
+  }
+}
+
+/* ── Mobile (≤480px) ──────────────────────────── */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0 1rem;
+  }
+
+  .card,
+  .voice-card,
+  .result-card {
+    padding: 1.5rem 1.125rem;
+    margin: 0;
+    border-radius: var(--radius);
+    box-shadow: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    max-width: 100%;
+  }
+
+  .page-center {
+    padding: 0;
+    align-items: flex-start;
+  }
+
+  .hero-section {
+    padding: 2rem 1rem;
+    text-align: left;
+  }
+
+  .hero-section p { margin-left: 0; }
+
+  .hero-badge,
+  .hero-meta { display: none; }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .record-row {
+    flex-direction: column;
+  }
+
+  .result-actions {
+    flex-direction: column;
+  }
+
+  .result-actions .btn {
+    width: 100%;
+  }
+
+  #toast-container {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+  }
+
+  .toast {
+    max-width: 100%;
+  }
+}
+
+/* ── Tall screens – prevent content from floating high ── */
+@media (min-height: 800px) {
+  .page-center {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    align-items: center;
+  }
+}
